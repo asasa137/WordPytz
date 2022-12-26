@@ -1,0 +1,29 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+    -   id: check-added-large-files
+-   repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        language_version: python3.8.5
+        args:
+          - --line-length=92
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: 3.9.2
+    hooks:
+    -   id: flake8
+        exclude: migrations
+        args:
+          - --max-line-length=300
+          - --ignore=E722,E266,E731,E203
+-   repo: https://github.com/PyCQA/bandit
+    rev: 1.7.1
+    hooks:
+    -   id: bandit
+        args:
+          - --skip
+          - B605
